@@ -1,0 +1,1 @@
+cmake -DGLFW_BUILD_DOCS=OFF -G "Visual Studio 17 2022" -A Win32 -S .\ -B .\out\build\

@@ -1,0 +1,5 @@
+git init
+# add .gitignore
+git commit -m "init"
+git submodule add https://github.com/glfw/glfw.git exteranl/glfw
+git commit -m "add glfw sub module"

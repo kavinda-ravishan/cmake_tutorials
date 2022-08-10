@@ -1,0 +1,23 @@
+cmake -S .\ -B .\out\build\
+MSBuild.exe .\out\build\app.vcxproj
+.\out\build\Debug\app.exe
+
+
+cmake -G "Visual Studio 17 2022" -A Win32 -S .\ -B "build32"
+cmake -G "Visual Studio 17 2022" -A x64 -S .\ -B "build64"
+cmake --build build32 --config Release
+cmake --build build64 --config Release
+cmake --build build32 --config debug
+cmake --build build64 --config debug
+
+
+cmake -G "Visual Studio 17 2022" -A Win32 -S .\ -B .\out\build\
+cmake --build .\out\build\ --config debug
+.\out\build\Debug\app.exe
+
+
+add_subdirectory(Utility) // add Utility/CMakeLists.txt
+
+target_include_directories(${PROJECT_NAME} PUBLIC Utility) // include directly headers inside Utility folder (#include "utility.hpp")
+target_link_directories(${PROJECT_NAME} PRIVATE Utility)
+target_link_libraries(${PROJECT_NAME} Utility) // link libraries
